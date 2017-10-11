@@ -4,6 +4,14 @@ const AWS_SK = 'rUCqEqtC6p0ikg+14kC1QVOWflYtY6G4GwlNelJJ';
 const AWS_ENDPOINT = 'webservices.amazon.com';
 const AWS_URI = '/onca/xml';
 
+/*  keys created in IAM  */
+// const AWS_AT = 'ProductAdvertisingAPI-user';
+// const AWS_AK = 'AKIAJBP5ORL5VRQBNHXA';
+// const AWS_SK = 'TMN0tUxrIJLhJbu2J5TCYmkXK+ovD5DWsqVOAUzN';
+// const AWS_ENDPOINT = 'webservices.amazon.com';
+// const AWS_URI = '/onca/xml';
+
+
 /*  TESTING VARIABLES  */
 // const AWS_AT = 'mytag-20';
 // const AWS_AK = 'AKIAIOSFODNN7EXAMPLE';
@@ -182,14 +190,15 @@ function test() {
 
 
 
+function callBack(data) {
+	console.log(data);
+}
 
-
-function getAmazonDataFromApiTwo(endpoint) {
+function getAmazonDataFromApiTwo(endpoint, callBack) {
 	// let xhr = createCORSRequest('GET', endpoint);
 	// xhr.send();
-	$.getJSON(endpoint, function(data) {
-		console.log(data);
-	});
+	console.log('running');
+	console.log($.getJSON(endpoint, callBack));
 }
 
 function getAmazonQueryTwo(searchTerm, timestamp) {
@@ -247,8 +256,7 @@ function handleAmazonApiTwo() {
 	const signedString = prepareSignStringTwo(canonicalString);
 	const signature = getAmazonSignatureTwo(signedString);
 	const requestUrl = getAmazonRequestUrlTwo(signature, canonicalString);
-	getAmazonDataFromApiTwo(requestUrl);
-	console.log(requestUrl);
+	getAmazonDataFromApiTwo(requestUrl, callBack);
 }
 
 $(handleAmazonApiTwo);
