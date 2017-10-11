@@ -236,7 +236,7 @@ function getAmazonSignatureTwo(string) {
 }
 
 function getAmazonRequestUrlTwo(signature, canonicalString) {
-	return `http://${AWS_ENDPOINT}${AWS_URI}?${canonicalString}&Signature=${signature}`;
+	return `https://${AWS_ENDPOINT}${AWS_URI}?${canonicalString}&Signature=${signature}`;
 }
 
 function handleAmazonApiTwo() {
