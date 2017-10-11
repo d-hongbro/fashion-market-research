@@ -18,7 +18,7 @@ const AWS_URI = '/onca/xml';
 
 function getAmazonDataFromApi(query, signature, callback) {
 	const newQuery = `${query}&Signature=${signature}`;
-	const endpoint = `http://${AWS_ENDPOINT}${AWS_URI}`;
+	const endpoint = `https://${AWS_ENDPOINT}${AWS_URI}`;
 	console.log(endpoint + '?' + newQuery);
 	console.log(newQuery);
     $.getJSON(endpoint, newQuery, callback)
